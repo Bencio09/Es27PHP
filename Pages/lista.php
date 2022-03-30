@@ -49,7 +49,7 @@ session_start();
                     <select id="list" name="list">
                         <?php
                             while ($row = mysqli_fetch_assoc ($result)){
-                            echo "<option value='$row[nome_lista]'>', $row[nome_lista],'</option>";
+                            echo "<option value='$row[nome_lista]'>", "$row[nome_lista]", "</option>";
                             }
                         ?>
                     </select>
