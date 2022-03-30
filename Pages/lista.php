@@ -8,7 +8,7 @@ session_start();
 <head>
     <title>Votazioni</title>
     <link rel="stylesheet" href="../CSS/bootstrap.css" type="text/css">
-    <script src="../JS/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 
 <body style="background-color: orange;">
@@ -38,42 +38,21 @@ session_start();
             </div>
             <div class="col-5" style="background-color: greenyellow; border: yellow solid 5px; text-align: center;">
                 <br>
-                <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        Liste
-                    </a>
-
-                    <?php
+                <?php
                     $query = "SELECT liste.nome_lista FROM liste order by liste.nome_lista";
                     $result = mysqli_query($connessione, $query) or die("Query fallita " . mysqli_error($connessione) . " " . mysqli_errno($connessione));
-                    $row = mysqli_fetch_assoc($result);
-                    echo "$row[nome_lista]";
+                ?>
+                
 
-                    ?>
-
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
-                    </ul>
-                </div>
-
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Liste
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <?php
-                        while ($row = mysqli_fetch_assoc ($result)){
-                        echo '<li><a class="dropdown-item" href="#">', $row["nome_lista"],' </a></li>';
-                        }
-                        ?>
-
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
                 <form action="./Pages/lista.php">
                     <br>
+                    <select id="list" name="list">
+                        <?php
+                            while ($row = mysqli_fetch_assoc ($result)){
+                            echo "<option value='$row[nome_lista]'>', $row[nome_lista],'</option>";
+                            }
+                        ?>
+                    </select>
                     <input class="btn btn-primary" type="submit" value="Invia">
                     <br>
                 </form>
