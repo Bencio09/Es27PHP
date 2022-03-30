@@ -46,13 +46,15 @@ session_start();
 
                 <form action="./Pages/lista.php">
                     <br>
-                    <select id="list" name="list">
+                    <select id="list" name="list" class="form-select" aria-label="Default select example">
+                        <option selected>Seleziona la lista</option>
                         <?php
                             while ($row = mysqli_fetch_assoc ($result)){
                             echo "<option value='$row[nome_lista]'>", "$row[nome_lista]", "</option>";
                             }
                         ?>
                     </select>
+                    <br>
                     <input class="btn btn-primary" type="submit" value="Invia">
                     <br>
                 </form>
