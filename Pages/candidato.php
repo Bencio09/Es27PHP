@@ -1,6 +1,8 @@
 <?php
 include "./connessione.php";
 session_start();
+$_SESSION["id_lista"] = $_POST["list"];
+$id_lista = $_SESSION["id_lista"];
 ?>
 
 <html>
@@ -39,22 +41,21 @@ session_start();
             <div class="col-5" style="background-color: greenyellow; border: yellow solid 5px; text-align: center;">
                 <br>
                 <?php
-                    $query = "SELECT * FROM liste order by liste.nome_lista";
+                    $query = "SELECT * FROM liste INNER JOIN candidati ON $id_lista = candidati.id_lista";
                     $result = mysqli_query($connessione, $query) or die("Query fallita " . mysqli_error($connessione) . " " . mysqli_errno($connessione));
                 ?>
                 
 
-                <form action="./candidato.php" method="POST">
+                <form action="./candidato.php">
                     <br>
                     <select id="list" name="list" class="form-select" aria-label="Default select example">
-                        <option selected>Seleziona la lista</option>
+                        <option selected>Seleziona il candidato</option>
                         <?php
                             while ($row = mysqli_fetch_assoc ($result)){
-                            echo "<option value='$row[id_lista]'>", "$row[nome_lista]", "</option>";
+                                echo "<option value='$row[id_candidato]'>", "$row[cognome]", " ", "$row[nome]", "</option>";
                             }
                         ?>
                     </select>
-
                     <br>
                     <input class="btn btn-primary" type="submit" value="Invia">
                     <br>
