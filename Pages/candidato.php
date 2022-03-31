@@ -41,7 +41,7 @@ $id_lista = $_SESSION["id_lista"];
             <div class="col-5" style="background-color: greenyellow; border: yellow solid 5px; text-align: center;">
                 <br>
                 <?php
-                    $query = "SELECT * FROM liste INNER JOIN candidati ON $id_lista = candidati.id_lista";
+                    $query = "SELECT * FROM liste INNER JOIN candidati ON liste.id_lista = candidati.id_lista WHERE candidati.id_lista = $id_lista";
                     $result = mysqli_query($connessione, $query) or die("Query fallita " . mysqli_error($connessione) . " " . mysqli_errno($connessione));
                 ?>
                 
