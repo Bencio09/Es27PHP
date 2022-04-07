@@ -12,7 +12,7 @@ session_start();
 </head>
 
 <body style="background-color: orange;">
-    <h3 style="text-align: center;">BENVENUTI NEL NUOVO SISTEMA ELETTORALE ELETTRONICO </h3>
+    <h3 style="text-align: center;">LISTA</h3>
     <div class="container">
         <br>
         <div class="row">

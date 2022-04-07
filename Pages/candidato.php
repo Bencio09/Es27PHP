@@ -14,7 +14,7 @@ $id_lista = $_SESSION["id_lista"];
 </head>
 
 <body style="background-color: orange;">
-    <h3 style="text-align: center;">BENVENUTI NEL NUOVO SISTEMA ELETTORALE ELETTRONICO </h3>
+    <h3 style="text-align: center;">CANDIDATI</h3>
     <div class="container">
         <br>
         <div class="row">
@@ -48,7 +48,7 @@ $id_lista = $_SESSION["id_lista"];
 
                 <form action="./conferma.php">
                     <br>
-                    <select id="list" name="list" class="form-select" aria-label="Default select example">
+                    <select id="candidato" name="candidato" class="form-select" aria-label="Default select example">
                         <option selected>Seleziona il candidato</option>
                         <?php
                             while ($row = mysqli_fetch_assoc ($result)){

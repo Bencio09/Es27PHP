@@ -1,8 +1,9 @@
 <?php
 include "./connessione.php";
 session_start();
-$_SESSION["id_lista"] = $_POST["list"];
+$_SESSION["id_candidati"] = $_POST["candidato"];
 $id_lista = $_SESSION["id_lista"];
+$id_candidati = $_SESSION["id_candidati"];
 ?>
 
 <html>
@@ -14,7 +15,7 @@ $id_lista = $_SESSION["id_lista"];
 </head>
 
 <body style="background-color: orange;">
-    <h3 style="text-align: center;">BENVENUTI NEL NUOVO SISTEMA ELETTORALE ELETTRONICO </h3>
+    <h3 style="text-align: center;">CONFERMA</h3>
     <div class="container">
         <br>
         <div class="row">
