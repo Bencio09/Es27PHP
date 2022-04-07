@@ -41,19 +41,19 @@ $id_lista = $_SESSION["id_lista"];
             <div class="col-5" style="background-color: greenyellow; border: yellow solid 5px; text-align: center;">
                 <br>
                 <?php
-                    $query = "SELECT * FROM liste INNER JOIN candidati ON liste.id_lista = candidati.id_lista WHERE candidati.id_lista = $id_lista";
-                    $result = mysqli_query($connessione, $query) or die("Query fallita " . mysqli_error($connessione) . " " . mysqli_errno($connessione));
+                $query = "SELECT * FROM liste INNER JOIN candidati ON liste.id_lista = candidati.id_lista WHERE candidati.id_lista = $id_lista";
+                $result = mysqli_query($connessione, $query) or die("Query fallita " . mysqli_error($connessione) . " " . mysqli_errno($connessione));
                 ?>
-                
 
-                <form action="./conferma.php">
+
+                <form action="./candidato.php">
                     <br>
                     <select id="list" name="list" class="form-select" aria-label="Default select example">
                         <option selected>Seleziona il candidato</option>
                         <?php
-                            while ($row = mysqli_fetch_assoc ($result)){
-                                echo "<option value='$row[id_candidato]'>", "$row[cognome]", " ", "$row[nome]", "</option>";
-                            }
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<option value='$row[id_candidato]'>", "$row[cognome]", " ", "$row[nome]", "</option>";
+                        }
                         ?>
                     </select>
                     <br>
