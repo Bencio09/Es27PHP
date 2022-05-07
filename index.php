@@ -2,7 +2,7 @@
 session_start();
 include "./Pages/connessione.php";
 //echo var_dump($_SERVER);
-
+   
 ?>
 
 <html>
@@ -18,15 +18,21 @@ include "./Pages/connessione.php";
         <br>
         
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <div class="row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-3">
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
+                <div class="col-sm-10">
                     <input type="text" class="form-control-plaintext" id="staticEmail" name="username">
                 </div>
             </div>
             <br>
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword" name="password">
+                </div>
+            </div>
             <?php
-                $query = "SELECT user.username FROM user where username = $_GET['username']";
+                $query = "SELECT user.username FROM user WHERE username = $username AND password = $password";
                 $result = mysqli_query($connessione, $query) or die("Query fallita " . mysqli_error($connessione) . " " . mysqli_errno($connessione));
 
                 echo $row=mysqli_fetch_array($result, MYSQLI_NUM);
